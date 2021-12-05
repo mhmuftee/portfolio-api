@@ -19,7 +19,7 @@ public class PortfolioApplication {
 		return new WebMvcConfigurerAdapter() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/").allowedOrigins("http://localhost:9000", "mhmuftee@github.io");
+				registry.addMapping("/").allowedOrigins("http://localhost:9000", "https://mhmuftee.github.io/");
 			}
 		};
 	}
