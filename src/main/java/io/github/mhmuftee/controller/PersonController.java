@@ -2,12 +2,14 @@ package io.github.mhmuftee.controller;
 
 import io.github.mhmuftee.dto.PersonDto;
 import io.github.mhmuftee.service.PersonService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/person")
+@CrossOrigin("https://mhmuftee.github.io")
 public class PersonController {
 
 
