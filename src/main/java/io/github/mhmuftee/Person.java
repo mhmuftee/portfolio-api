@@ -1,5 +1,7 @@
 package io.github.mhmuftee;
 
+import com.fasterxml.jackson.annotation.*;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,6 +10,7 @@ public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     private Long id;
 
     @Column(name = "firstname")
@@ -36,7 +39,7 @@ public class Person {
         this.profession = profession;
     }
 
-
+    @JsonIgnore
     public Long getId() {
         return id;
     }
