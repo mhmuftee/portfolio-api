@@ -19,7 +19,7 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "")
     public PersonDto getPerson() {
         return personService.findPerson();
     }
