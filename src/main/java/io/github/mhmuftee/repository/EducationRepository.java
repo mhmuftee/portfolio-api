@@ -1,0 +1,7 @@
+package io.github.mhmuftee.repository;
+
+import io.github.mhmuftee.model.Education;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EducationRepository extends JpaRepository<Education, Long> {
+}

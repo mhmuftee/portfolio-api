@@ -1,5 +1,6 @@
-package io.github.mhmuftee;
+package io.github.mhmuftee.repository;
 
+import io.github.mhmuftee.model.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
