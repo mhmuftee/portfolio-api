@@ -4,6 +4,9 @@ import io.github.mhmuftee.dto.EducationDto;
 import io.github.mhmuftee.dto.PersonDto;
 import io.github.mhmuftee.service.EducationService;
 import io.github.mhmuftee.service.PersonService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -11,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/person")
-@CrossOrigin(origins={"https://mhmuftee.github.io", "http://192.168.2.131:9000"})
 public class PersonController {
 
 
@@ -24,8 +26,10 @@ public class PersonController {
     }
 
     @GetMapping(value = "")
-    public PersonDto getPerson(@RequestBody PersonDto personDto) {
-        return personService.findPerson(personDto.getEmail());
+    public PersonDto getPerson() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) auth.getPrincipal();
+        return personService.findPerson(user.getUsername());
     }
 
     @PostMapping(value = "")
