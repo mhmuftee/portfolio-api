@@ -8,13 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Value("${name}")
-    private String name;
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        System.out.println(name);
 
         http
                 .cors()
