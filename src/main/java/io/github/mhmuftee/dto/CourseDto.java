@@ -8,19 +8,14 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
-
 @Getter
 @Setter
+@Accessors(chain = true)
 @ToString
 @NoArgsConstructor
-@Accessors(chain = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PersonDto {
-    private String email;
-    private String firstName;
-    private String lastName;
-    private String githubURL;
-    private String linkedinURL;
-    private String profession;
+public class CourseDto {
+    private String name;
+    private String courseNo;
 }

@@ -6,15 +6,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class PersonMapper {
     public static PersonDto toPersonDto(Person p) {
-        PersonDto pDto = new PersonDto();
-
-        pDto.setEmail(p.getEmail());
-        pDto.setFirstName(p.getFirstName());
-        pDto.setLastName(p.getLastName());
-        pDto.setGithubURL((p.getGithubURL()));
-        pDto.setLinkedinURL(p.getLinkedinURL());
-        pDto.setProfession(p.getProfession());
-
-        return pDto;
+        return new PersonDto()
+                .setEmail(p.getEmail())
+                .setFirstName(p.getFirstName())
+                .setLastName(p.getLastName())
+                .setGithubURL((p.getGithubURL()))
+                .setLinkedinURL(p.getLinkedinURL())
+                .setProfession(p.getProfession())
+                ;
     }
 }

@@ -6,21 +6,21 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 @Getter
 @Setter
 @ToString
 @Accessors(chain = true)
-@Table(name = "education")
-public class Education {
+@Table(name = "experience")
+public class Experience {
     @Id
-    @Column(name = "education_id")
+    @Column(name = "experience_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String degreeName;
-    private String subject;
+
+    private String jobTitle;
+    private String details;
     private String startTime;
     private String endTime;
 
@@ -31,7 +31,4 @@ public class Education {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
     private Person person;
-
-    @OneToMany(mappedBy = "education", cascade = CascadeType.ALL)
-    private Collection<Course> courses;
 }

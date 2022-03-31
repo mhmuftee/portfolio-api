@@ -1,27 +1,31 @@
 package io.github.mhmuftee.model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
-@Data
 @Getter
 @Setter
+@ToString
+@Accessors(chain = true)
+@Table(name = "person")
 public class Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "person_id")
     private Long id;
 
+    @Column(unique = true)
     private String email;
 
-    @Column(name = "firstname")
     private String firstName;
 
-    @Column(name = "lastname")
     private String lastName;
 
     @Column(name = "github")
@@ -31,4 +35,8 @@ public class Person {
     private String linkedinURL;
 
     private String profession;
+
+
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    private Collection<Education> educations;
 }
