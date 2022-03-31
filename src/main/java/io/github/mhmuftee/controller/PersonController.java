@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/person")
-@CrossOrigin("https://mhmuftee.github.io")
+@CrossOrigin("https://mhmuftee.github.io", "http://192.168.2.131:9000")
 public class PersonController {
 
 
