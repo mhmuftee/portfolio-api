@@ -20,12 +20,12 @@ public class Experience {
 
     private String jobTitle;
 
-    @Column(columnDefinition = "TEXT")
-    private String details;
-
     private String startTime;
 
     private String endTime;
+
+    @OneToOne(mappedBy = "experience", cascade = CascadeType.ALL)
+    private Details details;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "institution_id")

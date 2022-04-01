@@ -16,7 +16,7 @@ import java.util.Collection;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ExperienceDto implements Serializable {
     private String jobTitle;
-    private String details;
+    private DetailsDto details;
     private String startTime;
     private String endTime;
     private InstitutionDto institution;
