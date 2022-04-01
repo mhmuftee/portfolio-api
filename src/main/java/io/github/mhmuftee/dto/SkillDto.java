@@ -3,15 +3,13 @@ package io.github.mhmuftee.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
-import lombok.experimental.Accessors;
+
+import java.io.Serializable;
 
 @Data
-@Accessors(chain = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class InstitutionDto {
+public class SkillDto implements Serializable {
     private String name;
-    private String url;
-    private String location;
-    private String country;
+    private String logo;
 }

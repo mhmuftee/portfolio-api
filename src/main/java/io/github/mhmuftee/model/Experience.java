@@ -2,15 +2,14 @@ package io.github.mhmuftee.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Getter
 @Setter
-@ToString
 @Accessors(chain = true)
 @Table(name = "experience")
 public class Experience {
@@ -20,8 +19,12 @@ public class Experience {
     private Long id;
 
     private String jobTitle;
+
+    @Column(columnDefinition = "TEXT")
     private String details;
+
     private String startTime;
+
     private String endTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,4 +34,8 @@ public class Experience {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
     private Person person;
+
+
+    @OneToMany(mappedBy = "experience", cascade = CascadeType.ALL)
+    private Collection<Responsibility> responsibilities;
 }

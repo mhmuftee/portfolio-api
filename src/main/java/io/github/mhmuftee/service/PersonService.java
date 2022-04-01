@@ -4,7 +4,7 @@ import io.github.mhmuftee.dto.PersonDto;
 
 public interface PersonService {
 
-    PersonDto findPerson(String email);
+    PersonDto findPerson(Long id);
 
     Long getPersonId(String email);
 

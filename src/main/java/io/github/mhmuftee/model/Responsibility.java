@@ -6,22 +6,21 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 
-@Entity
 @Getter
 @Setter
 @Accessors(chain = true)
-public class Course {
+@Entity
+public class Responsibility {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "course_id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    private String courseNo;
     private String name;
-    private String description;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "education_id")
-    private Education education;
+    @JoinColumn(name = "experience_id")
+    private Experience experience;
 
 }

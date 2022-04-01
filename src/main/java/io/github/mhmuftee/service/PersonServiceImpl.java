@@ -1,9 +1,9 @@
 package io.github.mhmuftee.service;
 
 import io.github.mhmuftee.dto.PersonDto;
-import io.github.mhmuftee.dto.PersonMapper;
 import io.github.mhmuftee.model.Person;
 import io.github.mhmuftee.repository.PersonRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,17 +14,19 @@ import java.util.Optional;
 public class PersonServiceImpl implements PersonService {
 
     private final PersonRepository repository;
+    private ModelMapper modelMapper;
 
-    public PersonServiceImpl(PersonRepository repository) {
+    public PersonServiceImpl(ModelMapper modelMapper, PersonRepository repository) {
+        this.modelMapper = modelMapper;
         this.repository = repository;
     }
 
     @Override
-    public PersonDto findPerson(String email) {
-        Optional<Person> p = Optional.ofNullable(repository.findByEmail(email));
+    public PersonDto findPerson(Long id) {
+        Optional<Person> p = repository.findById(id);
 
         if (p.isPresent())
-            return PersonMapper.toPersonDto(p.get());
+            return modelMapper.map(p.get(), PersonDto.class);
         else
             throw new RuntimeException("user not found");
     }
@@ -35,7 +37,6 @@ public class PersonServiceImpl implements PersonService {
 
         if (p.isPresent())
             return p.get().getId();
-
         else
             throw new RuntimeException("user not found");
     }
@@ -54,6 +55,6 @@ public class PersonServiceImpl implements PersonService {
 
         Optional<Person> p = Optional.ofNullable(repository.save(person));
 
-        return PersonMapper.toPersonDto(p.get());
+        return modelMapper.map(p.get(), PersonDto.class);
     }
 }

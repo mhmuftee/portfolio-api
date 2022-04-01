@@ -2,7 +2,6 @@ package io.github.mhmuftee.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -11,7 +10,6 @@ import java.util.Collection;
 @Entity
 @Getter
 @Setter
-@ToString
 @Accessors(chain = true)
 @Table(name = "person")
 public class Person {
@@ -39,4 +37,13 @@ public class Person {
 
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     private Collection<Education> educations;
+
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    private Collection<Education> experiences;
+
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    private Collection<Skill> skills;
+
+    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
+    private About about;
 }

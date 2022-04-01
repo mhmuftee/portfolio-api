@@ -2,7 +2,6 @@ package io.github.mhmuftee.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -11,7 +10,6 @@ import java.util.Collection;
 @Entity
 @Getter
 @Setter
-@ToString
 @Accessors(chain = true)
 @Table(name = "education")
 public class Education {
