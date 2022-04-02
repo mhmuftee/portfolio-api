@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("")
+@CrossOrigin(value = {"https://mhmuftee.github.io/"})
 public class PersonController {
 
 
